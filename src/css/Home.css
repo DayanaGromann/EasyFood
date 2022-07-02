@@ -1,0 +1,50 @@
+.container{
+    display: flex; 
+}
+
+.PedidoEmDestaque{ 
+    width: 70%;
+    margin: 1%;
+}
+.PedidoEmDestaque h2, h3{
+    text-align: center;
+    padding: 1%;
+}
+.dados{
+    flex:0.5;
+    border-right: solid;
+    border-color: black;
+    padding:3%;
+}
+.pedido{
+    flex:0.5; 
+    padding: 3%;
+}
+.info{
+    display: flex;
+    justify-content: space-around;
+}
+.pedidos{
+    background-color: #1a83ff;
+    height: 90%;
+    width: 30%;
+    position: absolute;
+    right: 0;
+    overflow-y: scroll;
+    text-align : center;
+    padding: 2%;
+}
+.botao:hover{
+    background-color: #2a8bf9;
+}
+.botao{
+    font-size: small;
+    margin-top: 1%;;
+    background-color:#1a83ff;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 15px;
+}
+body{
+    background-color: aqua;
+}

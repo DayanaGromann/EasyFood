@@ -1,0 +1,26 @@
+.card{
+    background-color: #1a83ff;
+    margin: 1%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2%;
+    border-radius: 10px;
+}
+
+.botaoCozinha{
+    background-color: #060b26;
+    color: white;
+    width: 15%;
+    height: 50px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.card h3{
+    text-align: start;
+}
+
+
+.comidaContainer{
+    width: 70%;
+}

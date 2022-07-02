@@ -1,0 +1,25 @@
+.form{
+    width: 50%;
+    padding: 2%;
+    margin-left: 22%;
+    margin-top: 2%;
+    background-color: #1a83ff;
+    border-radius:20px;
+    justify-content: center;
+}
+.input{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid black;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+  @media only screen and (max-width: 800px) {
+      .form{
+        margin: 2%;
+        width: 96%;
+      }
+  }
