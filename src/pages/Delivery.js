@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import "../css/Delivery.css"
-function Delivery({pedidos}) {
+
+function Delivery({pedidos, atualizarEstadoPedido}) {
+  
   const [status, setStatus] = useState('iniciar');
   const configurarStatus = ()=>{
     if(status === 'iniciar'){
@@ -37,7 +39,16 @@ function Delivery({pedidos}) {
                 })
           }
             <br/>
-            <button className='botaoDelivery' onClick = {()=>{}}>Sair para a entrega</button>
+          
+            {
+              comanda.cliente.estado == "aguardando entregador" 
+                ? <button className='botaoDelivery' onClick = {() => {atualizarEstadoPedido(comanda.cliente.indice, 'saiu para entrega')}}>Sair para a entrega</button>
+                : comanda.cliente.estado == "saiu para entrega"
+                  ?<button className='botaoDelivery' onClick = {()=>{atualizarEstadoPedido(comanda.cliente.indice, 'entrega concluída')}}>confirmar entrega</button>
+                  :comanda.cliente.estado == "entrega concluída"
+                    ?<button className='botaoDelivery'>Entrega concluída</button>
+                    :<button className='botaoDelivery'>Não está pronto</button>
+            }
               </div>
               
             </div>

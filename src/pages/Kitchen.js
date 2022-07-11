@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import "../css/Kitchen.css"
-function Kitchen({pedidos}) {
+
+function Kitchen({pedidos, atualizarEstadoPedido}) {
+
   const [status, setStatus] = useState('iniciar');
+  
   const configurarStatus = ()=>{
     if(status === 'iniciar'){
       setStatus('iniciado')
@@ -9,26 +12,51 @@ function Kitchen({pedidos}) {
       setStatus('concluído')
     }
   }
+
+
+
   return (
-    <div>
+    <div className='kitchenContainer'>
       {
-        pedidos.map((comanda)=>{ 
+        pedidos.map((comanda,i)=>{ 
           return(
-          Object.keys(comanda.pedidos).map((comida,i)=>{
-            console.log( comanda.pedidos[comida])
-            return(
-              <div  key = {i} className='card'>
-                <div className='comidaContainer'>
-                  <h3>{comanda.pedidos[comida].nomeProduto}</h3>
-                  <p>descrição: {comanda.pedidos[comida].descricao}</p>
-                  <p>Observações: {comanda.pedidos[comida].observacoes}</p>
-                  <p>Tempo de preparo: {comanda.pedidos[comida].tempoPreparo} min</p>
-                </div>
-                <button className='botaoCozinha' onClick = {()=>{configurarStatus()}}>Iniciar Preparo</button>
+            <div key = {i} className='card'>
+              <div>
+              <h2>Comanda {comanda.cliente.indice}</h2>
+              {
+                comanda.cliente.estado == "aguardando confirmação" 
+                  ? <button className='botaoCozinha' onClick = {() => {atualizarEstadoPedido(comanda.cliente.indice, 'preparo iniciado')}}>Iniciar Preparo</button>
+                  : comanda.cliente.estado == "preparo iniciado"
+                    ?<button className='botaoCozinha' onClick = {()=>{atualizarEstadoPedido(comanda.cliente.indice, 'aguardando entregador')}}>Concluir preparo</button>
+                    :<button className='botaoCozinha'>Preparo concluído</button>
+              }
               </div>
-            )
-          })
+              <div>
+              {Object.keys(comanda.pedidos).map((comida,i)=>{
+                
+                return(
+                  <div  key = {i} >
+                    <div className='comidaContainer'>
+                      <br/>
+                      <hr/>
+                      <br/>
+                      <h3>{comanda.pedidos[comida].nomeProduto}</h3>
+                      <p><b>descrição:</b> {comanda.pedidos[comida].descricao}</p>
+                      <p><b>Observações: </b>{comanda.pedidos[comida].observacoes}</p>
+                      <p><b>Tempo de preparo:</b> {comanda.pedidos[comida].tempoPreparo} min</p>
+                      
+                    
+                    </div>
+                  
+                    
+                  </div>
+                )
+              })}
+              </div>
+            </div>
           )
+
+          
         })
       }
 

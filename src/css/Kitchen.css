@@ -1,26 +1,34 @@
 .card{
     background-color: #1a83ff;
     margin: 1%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
     padding: 2%;
     border-radius: 10px;
+    width: 400px;
+    
+}
+
+.kitchenContainer{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
 .botaoCozinha{
     background-color: #060b26;
     color: white;
-    width: 15%;
+    width: 200px;
     height: 50px;
     border-radius: 10px;
     cursor: pointer;
+   
 }
 .card h3{
-    text-align: start;
+    text-align: center;
 }
 
 
 .comidaContainer{
     width: 70%;
 }
+

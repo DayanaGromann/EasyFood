@@ -52,6 +52,12 @@ function App() {
 
   }
 
+  const atualizarEstadoPedido = (indiceCliente, estado) => {
+    const estadoRef = ref(database, 'comandas/comanda'+indiceCliente+'/cliente')
+
+    update(estadoRef, {estado: estado})
+  }
+
   return (
     <>
         <AuthContextProvider>
@@ -67,13 +73,13 @@ function App() {
             <Route path='/pedidos' element = {
               <ProtectedRoute>
                 <Navbar/>
-                <Kitchen pedidos = {pedidos}/>
+                <Kitchen pedidos = {pedidos} atualizarEstadoPedido = {atualizarEstadoPedido}/>
               </ProtectedRoute>
             }/>
             <Route path='/delivery' element = {
               <ProtectedRoute>
                 <Navbar/>
-                <Delivery pedidos = {pedidos}/>
+                <Delivery pedidos = {pedidos} atualizarEstadoPedido = {atualizarEstadoPedido}/>
               </ProtectedRoute>
             }/>
             <Route path='/cadastroprodutos' element = {
